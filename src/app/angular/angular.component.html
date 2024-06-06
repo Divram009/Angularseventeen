@@ -1,1 +1,73 @@
-<p>angular works!</p>
+<div class="row-fluid p-5">
+  <form class="row g-3 needs-validation" [formGroup]="userForm">
+    <div class="col-md-4">
+      <app-content-projection [label]="'firstName'"
+        [tooltip]="'test tooltip'" 
+        [validation]="(userForm.controls['firstName']?.touched || isSubmitted) && userForm.controls['firstName'].invalid ? userForm.controls['firstName']?.errors : {}">
+        <input type="text" class="form-control" formControlName="firstName"
+          id="validationCustom01" value="Mark" required/>
+      </app-content-projection>
+    </div>
+    <div class="col-md-4">
+      <app-content-projection [label]="'Last name'" [tooltip]="'test tooltip1'"
+        [validation]="(userForm.controls['lastName']?.touched  || isSubmitted) &&userForm.controls['lastName'].invalid ? userForm.controls['lastName']?.errors: {}">
+        <input type="text" class="form-control" formControlName="lastName"
+          id="validationCustom02" required/>
+      </app-content-projection>
+    </div>
+
+    <div class="col-md-4">
+      <app-content-projection [label]="'Username'" [tooltip]="'test tooltip2'"
+        [validation]="(userForm.controls['userName']?.touched ||isSubmitted) &&userForm.controls['userName'].invalid ? userForm.controls['userName']?.errors: {}">
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+          <input type="text" class="form-control" formControlName="userName"
+            id="validationCustomUsername" aria-describedby="inputGroupPrepend" required/>
+        </div>
+      </app-content-projection>
+    </div>
+
+    <div class="col-md-6">
+        <app-content-projection [label]="'City'" [tooltip]="'test tooltip5'"
+        [validation]="(userForm.controls['city']?.touched ||isSubmitted) &&userForm.controls['city'].invalid? userForm.controls['city']?.errors: {}">
+        <input type="text" class="form-control" formControlName="city"
+        id="validationCustom03" required/>
+      </app-content-projection>
+    </div>
+
+    <div class="col-md-3">
+        <app-content-projection [label]="'State'" [tooltip]="'test tooltip6'"
+        [validation]="(userForm.controls['state']?.touched ||isSubmitted) &&userForm.controls['state'].invalid ? userForm.controls['state']?.errors: {}">
+        <select class="form-select" formControlName="state" (change)="onStateChange()" id="validationCustom04" required>
+            <option selected value="">please select</option>
+            <option value="'1'">DE</option>
+            <option value="'2'">PA</option>
+            <option value="'3'">NE</option>
+          </select>
+      </app-content-projection>
+    </div>
+
+    <div class="col-md-3">
+        <app-content-projection [label]="'Zip'" [tooltip]="'test tooltip09'"
+        [validation]="(userForm.controls['zipcode']?.touched ||isSubmitted) &&userForm.controls['zipcode'].invalid? userForm.controls['zipcode']?.errors: {}">
+        <input type="text" class="form-control" formControlName="zipcode"
+        id="validationCustom05" required/>
+      </app-content-projection>
+    </div>
+
+    <div class="col-12">
+        <app-content-projection [label]="'Agree to terms and conditions'" [tooltip]="'test tooltip09'"
+        [validation]="(userForm.controls['isAgree']?.touched ||isSubmitted) &&userForm.controls['isAgree'].invalid? userForm.controls['isAgree']?.errors: {}">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value=""
+              formControlName="isAgree" id="invalidCheck" required/></div>
+      </app-content-projection>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>

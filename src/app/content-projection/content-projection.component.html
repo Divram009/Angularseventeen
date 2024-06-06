@@ -1,70 +1,17 @@
-
-<div class="row-fluid p-5">
-    <form class="row g-3 needs-validation" [formGroup]="userForm">
-        <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">First name</label>
-          <input type="text" class="form-control" formControlName="firstName" id="validationCustom01" value="Mark" required>
-          <!-- <div class="text-danger" *ngIf="userForm.controls['firstName']?.touched">
-            Firstname touched
-          </div> -->
-          <div class="text-danger" *ngIf="(userForm.controls['firstName']?.touched && userForm.controls['firstName'].invalid)||isSubmitted">
-           
-            <span *ngIf="userForm.controls['firstName']?.errors?.['minlength']">max length should be 5</span>
-            <span *ngIf="userForm.controls['firstName']?.errors?.['required']">Please enter first name</span>
-          </div>
-          
-        </div>
-        <div class="col-md-4">
-          <label for="validationCustom02" class="form-label">Last name</label>
-          <input type="text" class="form-control" formControlName="lastName"id="validationCustom02"  required>
-          <div class="text-danger" *ngIf="(userForm.controls['lastName']?.touched && userForm.controls['lastName'].invalid) || isSubmitted">
-           
-            <span *ngIf="userForm.controls['lastName']?.errors?.['minlength']">max length should be 4</span>
-            <span *ngIf="userForm.controls['lastName']?.errors?.['required']">Please enter last name</span>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <label for="validationCustomUsername" class="form-label">Username</label>
-          <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
-            <input type="text" class="form-control" formControlName="userName"id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-            <div class="text-danger" *ngIf="(userForm.controls['userName']?.touched && userForm.controls['userName'].invalid) || isSubmitted">
-           
-              <span *ngIf="userForm.controls['userName']?.errors?.['email']">please enter valid email</span>
-              <span *ngIf="userForm.controls['userName']?.errors?.['required']">Please enter last name</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">City</label>
-          <input type="text" class="form-control" id="validationCustom03" required>
-         
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">State</label>
-    
-          <select class="form-select" formControlName="state" id="validationCustom04" required>
-            <option selected disabled value="">Choose...</option>
-            <option>...</option>
-          </select>
-          
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">Zip</label>
-          <input type="text" class="form-control" formControlName="zipcode" id="validationCustom05" required>
-         
-        </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" formControlName="zipcode" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-           
-          </div>
-        </div>
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit form</button>
-        </div>
-      </form>
-    </div>
+<label title="{{ tooltip }}" class="form-label">{{ label }}</label>
+<ng-content></ng-content>
+<span class="text-danger" *ngIf="validation['required']">
+  {{ label }} field is required
+</span>
+<span class="text-danger" *ngIf="validation['minlength']">
+    {{ label }} min length error
+</span>
+<span class="text-danger" *ngIf="validation['maxlength']">
+  {{ label }} maxlength error
+</span>
+<span class="text-danger" *ngIf="validation['email']">
+  {{ label }} Enter valid email
+</span>
+<span class="text-danger" *ngIf="validation['invalidstate']">
+  {{ label }} Enter valid state
+</span>
