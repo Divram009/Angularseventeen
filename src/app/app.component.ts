@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,22 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor(private router:Router){}
+  
+  logout() {
+
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('user');
+    alert("user loggedout");
+    this.router.navigateByUrl( '/logout' );
+
+  
+  }
+
+
   title = 'angularseventeen';
 }
+
+
+
+
